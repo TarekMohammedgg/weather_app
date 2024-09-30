@@ -54,3 +54,6 @@ This package is used to manipulate strings for formatting dates. The `intl` pack
 1. Clone the repository:
    ```bash
    git clone https://github.com/TarekMohammedgg/weather_app.git
+
+## About Me 
+https://github.com/TarekMohammedgg/Tarek-Mohammed
