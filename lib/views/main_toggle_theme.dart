@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/cubits/get_theme_states.dart';
+import 'package:weather_app/cubits/get_weather_cubti/get_theme_cubit.dart';
 import 'package:weather_app/cubits/get_weather_cubti/get_weather_cubit.dart';
 import 'package:weather_app/cubits/get_weather_cubti/get_weather_states.dart';
 import 'package:weather_app/views/home_view.dart';
@@ -13,23 +15,34 @@ class WeatherApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => GetWeatherCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => GetWeatherCubit(),
+        ),
+        BlocProvider(
+          create: (context) => GetThemeCubit(),
+        ),
+      ],
       child: Builder(
         builder: (context) => BlocBuilder<GetWeatherCubit, WeatherState>(
           builder: (context, state) {
-            return MaterialApp(
-              theme: 
-               ThemeData(
-                appBarTheme: Theme.of(context).appBarTheme.copyWith(
-                      color: getThemeColor(
-                          BlocProvider.of<GetWeatherCubit>(context)
-                              .weatherModel
-                              ?.weatherCondition),
-                    ) ) ,
-              
-              debugShowCheckedModeBanner: false,
-              home: const HomeView(),
+            return BlocBuilder<GetThemeCubit, GetThemeStates>(
+              builder: (context, state) {
+                if (state is LightTheme) {
+                  return MaterialApp(
+                    theme: ThemeData.light(),
+                    debugShowCheckedModeBanner: false,
+                    home: const HomeView(),
+                  );
+                } else {
+                  return MaterialApp(
+                    theme: ThemeData.dark(),
+                    debugShowCheckedModeBanner: false,
+                    home: const HomeView(),
+                  );
+                }
+              },
             );
           },
         ),
@@ -80,3 +93,10 @@ MaterialColor getThemeColor(String? condition) {
 }
 
 
+   // theme: ThemeData(
+                  //     appBarTheme: Theme.of(context).appBarTheme.copyWith(
+                  //           color: getThemeColor(
+                  //               BlocProvider.of<GetWeatherCubit>(context)
+                  //                   .weatherModel
+                  //                   ?.weatherCondition),
+                  //         ))
