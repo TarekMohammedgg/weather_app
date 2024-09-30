@@ -3,7 +3,8 @@
 This is a simple Weather App built with Flutter. It provides real-time weather information for different locations by interacting with a weather API. The app is structured using the **BLoC** pattern and uses various Flutter packages to enhance functionality.
 
 ## Screenshots
-![No Weather Screen]("assets/NoWeatherScreen.png) 
+<img align="right" alt="Coding" width = "400" src = "assets/NoWeatherScreen.png">
+![No Weather Screen]("assets/NoWeatherScreen.png") 
 ![No Weather Screen]("assets/SearchWeatherScreen.png) 
 ![No Weather Screen]("assets/WeatherInfoScreen.png) 
 
