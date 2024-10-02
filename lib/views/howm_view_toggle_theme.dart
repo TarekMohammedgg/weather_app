@@ -4,7 +4,6 @@ import 'package:weather_app/cubits/get_theme_states.dart';
 import 'package:weather_app/cubits/get_weather_cubti/get_theme_cubit.dart';
 import 'package:weather_app/cubits/get_weather_cubti/get_weather_cubit.dart';
 import 'package:weather_app/cubits/get_weather_cubti/get_weather_states.dart';
-import 'package:weather_app/models/weather_model.dart';
 import 'package:weather_app/views/search_view.dart';
 import 'package:weather_app/widgets/no_weather_body.dart';
 import 'package:weather_app/widgets/weather_info_body.dart';

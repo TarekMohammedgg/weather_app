@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/cubits/get_weather_cubti/get_weather_cubit.dart';
 import 'package:weather_app/cubits/get_weather_cubti/get_weather_states.dart';
-import 'package:weather_app/main.dart';
 import 'package:weather_app/models/weather_model.dart';
 import 'package:weather_app/views/search_view.dart';
 import 'package:weather_app/widgets/no_weather_body.dart';
@@ -35,7 +34,13 @@ class HomeView extends StatelessWidget {
             return WeatherInfoBody(weather: state.weatherModel);
           } else {
             return const Center(
-              child: Text("Oops there are an error try another time"),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Sorry , The City is not found "),
+                  Text("Try another City")
+                ],
+              ),
             );
           }
         },
